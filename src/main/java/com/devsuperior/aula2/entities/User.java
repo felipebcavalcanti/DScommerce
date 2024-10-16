@@ -14,10 +14,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Column(unique = true)
     private String email;
+
     private String phone;
     private LocalDate birthDate;
     private String password;
+
     /*1 cliente para varios pedidos, no caso aqui vai a lista de pedidos*/
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
