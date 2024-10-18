@@ -3,6 +3,8 @@ package com.devsuperior.aula2.entities;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.Objects;
+
 @Entity
 @Table(name = "tb_payment")
 public class Payments {
@@ -44,5 +46,19 @@ public class Payments {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Payments payments = (Payments) o;
+        return Objects.equals(id, payments.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
